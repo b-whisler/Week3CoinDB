@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,6 +39,7 @@ public class Program {
 			} else if(chosenOption.equals("4")) {
 				viewCoins();
 			} else if(chosenOption.equals("5")) {
+				System.out.println("Bye!");
 				ch.cleanUp();
 				cont = false;
 			}
@@ -83,7 +83,7 @@ public class Program {
 			toEdit.setDenomination(denomination);
 		}
 		ch.editCoin(toEdit);
-		} catch (InputMismatchException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("Invalid input, returning to the menu.");
 			return;
 		}	
@@ -92,10 +92,10 @@ public class Program {
 	private static void removeCoin() {
 		System.out.print("Enter the ID of the coin to remove: ");
 		try {
-		int id = in.nextInt();
+		int id = Integer.parseInt(in.nextLine());
 		Coin toRemove = ch.getCoinById(id);
 		ch.removeCoin(toRemove);
-		} catch (InputMismatchException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("Invalid input, returning to the menu.");
 		}
 	}
