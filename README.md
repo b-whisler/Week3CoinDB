@@ -1,1 +1,1 @@
-A simple program to manage a coin collection with a menu system in the console. The collection is saved to a local MySQL database.
+A web application allowing you to manage a coin collection. It uses a local MySQL database to store the data, and utilizes JSP and servlets.
