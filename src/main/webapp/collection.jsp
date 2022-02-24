@@ -5,14 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Your Coin Collection</title>
-<style>
-table, th, td {
-  border: 1px solid;
-  border-collapse: collapse;
-  padding: 5px;
-}
-</style>
+<title>Your Coin Collection - Coin Collection Manager</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <h1>Your Coin Collection</h1>

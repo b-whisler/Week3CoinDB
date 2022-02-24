@@ -50,9 +50,7 @@ public class CountryHelper {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		CoinHelper ch = new CoinHelper();
-		//c.setCountryCoins(ch.searchForCoinByCountry(c.getName()));
 		c.setCountryCoins(getCoinsOfCountry(c));
-		//System.out.println(c.getCountryCoins().toString());
 		em.merge(c);
 		em.getTransaction().commit();
 		em.close();
@@ -80,10 +78,37 @@ public class CountryHelper {
 	public List<Coin> getCoinsOfCountry(Country c){
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Coin> typedQuery = em.createQuery("select c from Coin c where c.country = :selectedId", Coin.class);
-		typedQuery.setParameter("selectedId", c);
+		TypedQuery<Coin> typedQuery = em.createQuery("select co from Coin co where co.countryid = :selectedId", Coin.class);
+		typedQuery.setParameter("selectedId", c.getId());
 		List<Coin> result = typedQuery.getResultList();
 		em.close();
 		return result;
+	}
+	
+	public void removeCoinFromCountry(Coin coin) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Country country = coin.getCountry();
+		List<Coin> list = country.getCountryCoins();
+		// Find the coin to remove in the list
+		int index = -1;
+		for (int x = 0; x < list.size(); x++) {
+			if (list.get(x).getId() == coin.getId()) {
+				index = x;
+			}
+		}
+		list.remove(index);
+		country.setCountryCoins(list);
+		em.merge(country);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void editCountry (Country toEdit)	{
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
 	}
 }

@@ -26,18 +26,6 @@ public class CoinHelper {
 		em.close();
 	}
 	
-	public void removeCoin(Coin toRemove) {
-		EntityManager em = emFactory.createEntityManager();
-		em.getTransaction().begin();
-		TypedQuery<Coin> typedQuery	= em.createQuery("select co from Coin co where co.id = :selectedId", Coin.class);
-		typedQuery.setParameter("selectedId", toRemove.getId());
-		typedQuery.setMaxResults(1);
-		Coin result	= typedQuery.getSingleResult();
-		em.remove(result);
-		em.getTransaction().commit();
-		em.close();
-		}
-	
 	public List<Coin> getAllCoins(){
 		EntityManager em = emFactory.createEntityManager();
 		List<Coin> allItems	= em.createQuery("SELECT i FROM Coin i").getResultList();

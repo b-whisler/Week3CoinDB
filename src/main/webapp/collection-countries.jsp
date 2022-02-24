@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<title>Your Coin Collection Countries - Coin Collection Manager</title>
+<link rel="stylesheet" href="css/style.css">
 <body>
 <c:forEach items="${allCountries}" var="country">
 			<h1>${country.name}</h1>

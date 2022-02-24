@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Coin - Coin Collection Manager</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-Add a coin:
+<h1>Add A Coin</h1>
 <form action = "addCoinServlet" method="post">
 Country: <select name="country">
 		<c:forEach items="${allCountries}" var="country">

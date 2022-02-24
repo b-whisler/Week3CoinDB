@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Country Management - Coin Collection Manager</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <h1>Country Management</h1>
@@ -31,5 +32,6 @@
 <input type = "submit" value = "Edit" name = "userSelection">
 <input type = "submit" value = "Delete" name = "userSelection">
 </form>
+<a href="index.html">Back to home</a>
 </body>
 </html>

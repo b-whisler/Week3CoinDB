@@ -5,11 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Coin - Coin Collection Manager</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<h1>Edit Coin</h1>
 <form action = "editCoinServlet" method="post">
-Country: <input type ="text" name = "country" value= "${coinToEdit.country}"><br />
+Country: <select name="country">
+		<c:forEach items="${allCountries}" var="country">
+			<option value="${country.id}">${country.name}</option>
+		</c:forEach>
+	</select><br />
 Year: <input type = "text" name = "year" value= "${coinToEdit.year}"><br />
 Denomination: <input type = "text" name = "denomination" value= "${coinToEdit.denomination}"><br />
 <input type = "hidden" name = "id" value="${coinToEdit.id}">

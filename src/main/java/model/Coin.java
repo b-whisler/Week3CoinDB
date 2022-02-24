@@ -23,8 +23,8 @@ public class Coin {
 	@GeneratedValue
 	@Column(name="ID")
 	private int id;
-	@ManyToOne(cascade= {CascadeType.MERGE}, fetch=FetchType.EAGER)
-	private Country country;
+	@Column(name="COUNTRY_ID")
+	private int countryid;
 	@Column(name="YEAR")
 	private int year;
 	@Column(name="DENOMINATION")
@@ -34,8 +34,8 @@ public class Coin {
 		
 	}
 
-	public Coin(Country country, int year, String denomination) {
-		this.country = country;
+	public Coin(int countryid, int year, String denomination) {
+		this.countryid = countryid;
 		this.year = year;
 		this.denomination = denomination;
 	}
@@ -48,12 +48,12 @@ public class Coin {
 		this.id = id;
 	}
 
-	public Country getCountry() {
-		return country;
+	public int getCountryId() {
+		return countryid;
 	}
 
-	public void setCountry(Country country) {
-		this.country = country;
+	public void setCountryId(int countryid) {
+		this.countryid = countryid;
 	}
 
 	public int getYear() {
@@ -73,11 +73,16 @@ public class Coin {
 	}
 	
 	public String getCoinInfo() {
-		return this.country + " - " + this.year + " - " + this.denomination;
+		return this.countryid + " - " + this.year + " - " + this.denomination;
 	}
 	
 	public String getFullCoinInfo() {
-		return "ID: " + this.id + " | Country: " + this.country + " | Year: " + this.year + " | Denomination: " + this.denomination;
+		return "ID: " + this.id + " | Country: " + this.countryid + " | Year: " + this.year + " | Denomination: " + this.denomination;
+	}
+	
+	public Country getCountry() {
+		CountryHelper ch = new CountryHelper();
+		return ch.getCountryById(countryid);
 	}
 	
 }

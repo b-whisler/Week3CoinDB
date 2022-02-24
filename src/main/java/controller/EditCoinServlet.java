@@ -29,12 +29,12 @@ public class EditCoinServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CoinHelper ch = new CoinHelper();
-		String country = request.getParameter("country");
+		int country = Integer.parseInt(request.getParameter("country")) ;
 		int year = Integer.parseInt(request.getParameter("year"));
 		String denom = request.getParameter("denomination");
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		Coin coinToUpdate = ch.getCoinById(tempId);
-		coinToUpdate.setCountry(country);
+		coinToUpdate.setCountryId(country);
 		coinToUpdate.setYear(year);
 		coinToUpdate.setDenomination(denom);
 		ch.editCoin(coinToUpdate);

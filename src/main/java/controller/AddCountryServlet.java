@@ -8,34 +8,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Coin;
+import model.Country;
 
 /**
- * Servlet implementation class AddCoinServlet
+ * Servlet implementation class addCountryServlet
  */
-@WebServlet("/addCoinServlet")
-public class AddCoinServlet extends HttpServlet {
+@WebServlet("/addCountryServlet")
+public class AddCountryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddCoinServlet() {
+    public AddCountryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int countryId = Integer.parseInt(request.getParameter("country"));
-		int year = Integer.parseInt(request.getParameter("year"));
-		String denom = request.getParameter("denomination");
+		String country = request.getParameter("country");
+		String currency = request.getParameter("currency");
 		CountryHelper cnh = new CountryHelper();
-		Coin nc = new Coin(countryId, year, denom);
-		CoinHelper ch = new CoinHelper();
-		ch.addCoin(nc);
-		cnh.updateCountryCoins(cnh.getCountryById(countryId));
+		Country nc = new Country(country, currency);
+		cnh.addCountry(nc);
 		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}
 

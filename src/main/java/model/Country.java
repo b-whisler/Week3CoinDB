@@ -21,7 +21,7 @@ public class Country {
 	private int id;
 	private String name;
 	private String currency;
-	@OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
+	@OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch=FetchType.EAGER, orphanRemoval=true)
 	private List<Coin> countryCoins;
 	
 	public Country() {
