@@ -28,12 +28,14 @@ public class AddCoinServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String country = request.getParameter("country");
+		int countryId = Integer.parseInt(request.getParameter("country"));
 		int year = Integer.parseInt(request.getParameter("year"));
 		String denom = request.getParameter("denomination");
-		Coin nc = new Coin(country, year, denom);
+		CountryHelper cnh = new CountryHelper();
+		Coin nc = new Coin(cnh.getCountryById(countryId), year, denom);
 		CoinHelper ch = new CoinHelper();
 		ch.addCoin(nc);
+		cnh.updateCountryCoins(cnh.getCountryById(countryId));
 		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}
 

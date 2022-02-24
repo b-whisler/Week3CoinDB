@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ViewCollectionServlet
+ * Servlet implementation class ViewCountriesServlet
  */
-@WebServlet("/viewCollectionServlet")
-public class ViewCollectionServlet extends HttpServlet {
+@WebServlet("/viewCountriesServlet")
+public class ViewCountriesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewCollectionServlet() {
+    public ViewCountriesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,11 +26,11 @@ public class ViewCollectionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CoinHelper ch = new CoinHelper();
+		CountryHelper ch = new CountryHelper();
 		String path = "/index.html"; // Default path
-		if(!ch.getAllCoins().isEmpty()){
-			request.setAttribute("allCoins", ch.getAllCoins());
-			path = "/collection.jsp";
+		if(!ch.getAllCountries().isEmpty()){
+			request.setAttribute("allCountries", ch.getAllCountries());
+			path = "/countries.jsp";
 		}
 		getServletContext().getRequestDispatcher(path).forward(request, response); 
 	}

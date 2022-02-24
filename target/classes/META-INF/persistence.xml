@@ -3,6 +3,7 @@
 	<persistence-unit name="Coins" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.Coin</class>
+		<class>model.Country</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

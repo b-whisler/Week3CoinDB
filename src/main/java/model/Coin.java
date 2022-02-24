@@ -5,11 +5,16 @@
  */
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import controller.CountryHelper;
 
 @Entity
 @Table(name="coins")
@@ -18,8 +23,8 @@ public class Coin {
 	@GeneratedValue
 	@Column(name="ID")
 	private int id;
-	@Column(name="COUNTRY")
-	private String country;
+	@ManyToOne(cascade= {CascadeType.MERGE}, fetch=FetchType.EAGER)
+	private Country country;
 	@Column(name="YEAR")
 	private int year;
 	@Column(name="DENOMINATION")
@@ -29,7 +34,7 @@ public class Coin {
 		
 	}
 
-	public Coin(String country, int year, String denomination) {
+	public Coin(Country country, int year, String denomination) {
 		this.country = country;
 		this.year = year;
 		this.denomination = denomination;
@@ -43,11 +48,11 @@ public class Coin {
 		this.id = id;
 	}
 
-	public String getCountry() {
+	public Country getCountry() {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(Country country) {
 		this.country = country;
 	}
 

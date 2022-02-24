@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ViewCollectionServlet
+ * Servlet implementation class AddCountriesForCoinServlet
  */
-@WebServlet("/viewCollectionServlet")
-public class ViewCollectionServlet extends HttpServlet {
+@WebServlet("/getCountriesForCoinServlet")
+public class GetCountriesForCoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewCollectionServlet() {
+    public GetCountriesForCoinServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,13 +26,12 @@ public class ViewCollectionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CoinHelper ch = new CoinHelper();
-		String path = "/index.html"; // Default path
-		if(!ch.getAllCoins().isEmpty()){
-			request.setAttribute("allCoins", ch.getAllCoins());
-			path = "/collection.jsp";
+		CountryHelper ch = new CountryHelper();
+		request.setAttribute("allCountries", ch.getAllCountries());
+		if(ch.getAllCountries().isEmpty()){
+		request.setAttribute("allCountries", " ");
 		}
-		getServletContext().getRequestDispatcher(path).forward(request, response); 
+		getServletContext().getRequestDispatcher("/add-coin.jsp").forward(request, response);
 	}
 
 	/**

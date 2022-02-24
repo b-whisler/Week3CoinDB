@@ -6,13 +6,12 @@
 </head>
 <body>
 <h1>Coin Collection Manager</h1>
-Add a coin:
-<form action = "addCoinServlet" method="post">
-Country: <input type ="text" name = "country"><br />
-Year: <input type = "text" name = "year"><br />
-Denomination: <input type = "text" name = "denomination"><br />
-<input type = "submit" value="Add Coin">
-</form> <br />
-<a href = "viewCollectionServlet">View your collection</a>
+<ul>
+<li><a href = "getCountriesForCoinServlet">Add a coin</a></li>
+<li><a href = "add-country.html">Add a country</a></li>
+<li><a href = "viewCountriesServlet">View countries</a></li>
+<li><a href = "viewCollectionServlet">View your collection</a></li>
+<li><a href = "viewCollectionByCountriesServlet">View collection by country</a></li>
+</ul>
 </body>
 </html>

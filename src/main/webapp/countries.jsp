@@ -1,35 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Your Coin Collection</title>
-<style>
-table, th, td {
-  border: 1px solid;
-  border-collapse: collapse;
-  padding: 5px;
-}
-</style>
+<title>Insert title here</title>
 </head>
 <body>
-<h1>Your Coin Collection</h1>
-<form method = "post" action = "selectionServlet">
+<h1>Country Management</h1>
+<form method = "post" action = "countrySelectionServlet">
 <table>
 <tr>
 <th>Select</th>
 <th>Country</th>
-<th>Year</th>
-<th>Denomination</th>
+<th>Currency</th>
+<th>No. Of Coins</th>
 </tr>
-<c:forEach items="${requestScope.allCoins}" var="currentcoin">
+<c:forEach items="${requestScope.allCountries}" var="country">
 <tr>
- <td><input type="radio" name="id" value="${currentcoin.id}"></td>
- <td>${currentcoin.country.name}</td>
- <td>${currentcoin.year}</td>
- <td>${currentcoin.denomination}</td>
+ <td><input type="radio" name="id" value="${country.id}"></td>
+ <td>${country.name}</td>
+ <td>${country.currency}</td>
+ <td>${fn:length(country.countryCoins)}</td>
  </tr>
 </c:forEach>
 </table>
